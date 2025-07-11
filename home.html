@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/dropdown.css">
+    <title>Repositori TMA</title>
+</head>
+
+<body>
+<header class="global-top-header">
+    <a href="home.html" class="header-left-text-link">SAMPLE</a>
+    <div class="header-right-user">
+        <img src="assets/icons_female.svg" alt="User Avatar" class="user-avatar">
+        <span>Name</span>
+        <div class="user-dropdown">
+            <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                <span class="hierarchy-text">Menu</span><span class="arrow-down">&#9662;</span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdown-toggle-button">
+                <a href="settings.html" class="dropdown-item">Settings</a>
+                <a href="index.html" class="dropdown-item">Log Out</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <header>
+             <div class="hero-section">
+                <img src="assets/placeholder-coal-mining.jpg" alt="Sample image" class="header-main-logo">
+                <h1 class="overlay-title">Personal Information Management System</h1>
+             </div>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Cari nama perusahaan ...">
+            <button id="searchButton">Cari</button>
+        </div>
+
+
+        <div class="repository-grid">
+            <div class="repository-item">
+                <div class="item-content">
+                    <h2><a href="company-detail.html">PT ABC</a></h2>
+                    </div>
+            </div>
+
+            <div class="repository-item">
+                <div class="item-content">
+                    <h2><a href="company-detail.html">PT DEF</a></h2>
+                    </div>
+            </div>
+
+            <div class="repository-item">
+                <div class="item-content">
+                    <h2><a href="company-detail.html">PT GHI</a></h2>
+                    </div>
+            </div>
+
+            <div class="repository-item">
+                <div class="item-content">
+                    <h2><a href="company-detail.html">CV JKL</a></h2>
+                    </div>
+            </div>
+
+            </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Personal Information Management System. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script src="javascript/script.js"></script>
+    <script src="javascript/dropdown.js"></script>
+</body>
+</html>

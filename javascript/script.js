@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('searchButton');
     const repoItems = document.querySelectorAll('.repository-item'); // Ini akan menjadi NodeList kosong di company-detail.html
 
-    // --- Fungsi Filtering (hanya relevan di index.html) ---
+    // --- Fungsi Filtering (hanya relevan di home.html) ---
     function filterRepositoryItems() {
         const searchTerm = searchInput.value.toLowerCase();
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchInput.addEventListener('keyup', filterRepositoryItems);
     }
 
-    // Untuk efek klik pada setiap item repositori (hanya relevan di index.html)
+    // Untuk efek klik pada setiap item repositori (hanya relevan di home.html)
     // Cek apakah ada item repositori yang ditemukan (NodeList tidak kosong)
     if (repoItems.length > 0) {
         repoItems.forEach(item => {
