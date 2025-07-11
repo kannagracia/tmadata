@@ -1,0 +1,281 @@
+/* --- Dashboard Specific Layout --- */
+.dashboard-wrapper {
+    flex-grow: 1; /* Allow wrapper to take remaining space */
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.dashboard-main-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 1200px; /* Consistent max width */
+    box-sizing: border-box;
+}
+
+.dashboard-main-content h1 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 2.2em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* --- Tabs Styling --- */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 3px solid transparent; /* For active state */
+    margin: 0 10px;
+}
+
+.tab-button:hover {
+    color: #007bff;
+}
+
+.tab-button.active {
+    color: #007bff;
+    border-bottom: 3px solid #007bff;
+}
+
+/* --- Tab Content Styling --- */
+.tab-content {
+    display: none; /* Hidden by default */
+    padding: 20px 0;
+}
+
+.tab-content.active {
+    display: block; /* Active tab content is displayed */
+}
+
+/* --- Company Cards Container (Reused from previous code) --- */
+.company-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px;
+}
+
+.company-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.company-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.company-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #007bff;
+    font-size: 1.3em;
+}
+
+.company-card p {
+    color: #666;
+    font-size: 0.95em;
+    margin-bottom: 15px;
+}
+
+.company-card .btn-edit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    align-self: flex-end;
+    transition: background-color 0.3s ease;
+}
+
+.company-card .btn-edit:hover {
+    background-color: #218838;
+}
+
+/* --- Edit Company Form Overlay (Reused from previous code) --- */
+.edit-company-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.edit-company-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.edit-company-form-card {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.edit-company-overlay.active .edit-company-form-card {
+    transform: translateY(0);
+}
+
+.edit-company-form-card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.edit-company-form-card input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease;
+}
+
+.edit-company-form-card input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* --- Coming Soon Section --- */
+.coming-soon-message {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    color: #666;
+    font-size: 1.2em;
+}
+
+.coming-soon-message h2 {
+    margin-top: 0;
+    color: #444;
+    font-size: 1.8em;
+}
+
+.coming-soon-img {
+    max-width: 200px;
+    margin-top: 20px;
+    opacity: 0.7;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .dashboard-main-content {
+        padding: 20px;
+    }
+    .tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tab-button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    .company-cards-container {
+        grid-template-columns: 1fr;
+    }
+    .edit-company-form-card {
+        padding: 25px;
+    }
+    .form-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+}

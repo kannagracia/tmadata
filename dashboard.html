@@ -1,10 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/dropdown.css">
+    <link rel="stylesheet" href="style/dashboard.css">
 </head>
 <body>
-    
+
+    <header class="global-top-header">
+        <a href="home.html" class="header-left-text-link">SAMPLE</a>
+        <div class="header-right-user">
+            <img src="assets/icons_female.svg" alt="User Avatar" class="user-avatar">
+            <span>Name</span>
+            <div class="user-dropdown">
+                <button class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <span class="hierarchy-text">Menu</span><span class="arrow-down">&#9662;</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdown-toggle-button">
+                    <a href="settings.html" class="dropdown-item">Settings</a>
+                    <a href="index.html" class="dropdown-item">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div data-include="header"></div>
+
+    <div class="dashboard-wrapper">
+        <div class="dashboard-main-content">
+            <h1>Admin Panel</h1>
+
+            <div class="tabs">
+                <button class="tab-button active" data-tab="company-info">Company Information</button>
+                <button class="tab-button" data-tab="company-assets">Company Assets</button>
+            </div>
+
+            <div id="company-info-tab" class="tab-content active">
+                <h2>Manage Companies</h2>
+                <div class="company-cards-container" id="company-list">
+                    </div>
+
+                <div class="edit-company-overlay" id="edit-overlay">
+                    <div class="edit-company-form-card">
+                        <h2>Edit Company Details</h2>
+                        <form id="edit-company-form">
+                            <input type="hidden" id="edit-company-id"> 
+
+                            <div class="form-group">
+                                <label for="edit-company-name">Company Name</label>
+                                <input type="text" id="edit-company-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-company-location">Location</label>
+                                <input type="text" id="edit-company-location" required>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">Save Changes</button>
+                                <button type="button" class="btn-secondary" id="cancel-edit">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="company-assets-tab" class="tab-content">
+                <div class="coming-soon-message">
+                    <h2>Company Assets</h2>
+                    <p>This section is under development. Coming Soon!</p>
+                    <img src="assets/coming_soon_placeholder.svg" alt="Coming Soon" class="coming-soon-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascript/dropdown.js"></script>
+    <script src="javascript/dashboard.js"></script>
 </body>
 </html>
