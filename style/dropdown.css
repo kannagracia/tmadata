@@ -1,0 +1,72 @@
+/* User Dropdown Container */
+.user-dropdown {
+    position: relative; /* Crucial for positioning the dropdown menu */
+    display: inline-block; /* Allows it to sit next to other inline elements */
+    /* margin-left: auto; (Not needed here as it's within header-right-user) */
+}
+
+/* Dropdown Toggle Button (e.g., "Menu" text with arrow) */
+.dropdown-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px; /* Adjust padding as needed for clickable area */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between "Menu" text and arrow */
+    color: inherit; /* Inherit text color from header-right-user */
+    font-size: 1em; /* Match surrounding text size */
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+    background-color: #e0e0e0; /* Light hover effect for the button */
+}
+
+.dropdown-toggle .arrow-down {
+    font-size: 0.8em; /* Make arrow slightly smaller */
+    transition: transform 0.3s ease; /* Smooth rotation */
+}
+
+/* Rotate arrow when dropdown is open */
+.user-dropdown.show .dropdown-toggle .arrow-down {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #fff; /* White background for the menu */
+    min-width: 160px; /* Minimum width of the menu */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Soft shadow */
+    z-index: 100; /* Ensure it appears on top of other content */
+    top: 100%; /* Position right below the toggle button */
+    right: 0; /* Align to the right edge of the toggle button */
+    border-radius: 5px;
+    overflow: hidden; /* For clean rounded corners on items */
+    list-style: none; /* Remove default list bullets if using ul */
+    padding: 0;
+    margin: 0;
+}
+
+/* Dropdown Items (Links) */
+.dropdown-menu .dropdown-item {
+    color: #333; /* Darker text color */
+    padding: 12px 16px;
+    text-decoration: none; /* Remove underline */
+    display: block; /* Make the entire area clickable */
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Change color of dropdown items on hover */
+.dropdown-menu .dropdown-item:hover {
+    background-color: #f1f1f1; /* Light grey on hover */
+    color: #007bff; /* Example: highlight text color on hover */
+}
+
+/* Class to show the dropdown menu (added by JavaScript) */
+.user-dropdown.show .dropdown-menu {
+    display: block;
+}
