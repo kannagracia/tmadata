@@ -159,45 +159,39 @@ body {
 }
 
 .repository-item .item-content {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     width: 100%;
 }
 
 .repository-item .item-content h2 {
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Also reduced this margin */
     color: #007bff;
     font-size: 1.4em;
     font-weight: bold;
 }
 
-.action-buttons { /* NEW: Flex container for Edit/Delete buttons */
+.action-buttons {
     display: flex;
-    gap: 10px; /* Space between buttons */
-    margin-top: 15px;
+    gap: 10px;
+    margin-top: 5px; /* Reduced space above the buttons */
     justify-content: center;
     width: 100%;
 }
 
-/* Ensure common properties for btn-edit (from style.css) and btn-delete */
 .btn-edit, .btn-delete {
-    flex: 1; /* Allow buttons to grow and share space equally */
-    max-width: 120px; /* Max width to prevent them from becoming too wide */
-    /* Common button styles (padding, border-radius, font-size, font-weight, cursor, transition)
-       should ideally be defined in a more general button class in style.css,
-       or directly on .btn-edit and then specifically for .btn-delete here.
-       For now, assuming .btn-edit gets its core styles from style.css. */
+    flex: 1;
+    max-width: 120px;
 }
 
-/* Specific styling for btn-delete */
-.btn-delete { /* NEW */
-    background-color: #dc3545; /* Red for delete */
-    color: white; /* Ensure text color for consistency */
-    border: none; /* Ensure no border */
-    padding: 8px 15px; /* Match btn-edit padding for size consistency */
-    border-radius: 5px; /* Match btn-edit border-radius */
-    font-size: 0.9em; /* Match btn-edit font size */
-    font-weight: bold; /* Match btn-edit font weight */
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -281,19 +275,17 @@ body {
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
 }
 
-.form-actions, .modal-actions { /* Combined for similar button layouts */
+.form-actions, .modal-actions {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 30px;
 }
 
-/* These are general button styles, assuming they are also defined in style.css or a common utility file.
-   If not, you might need to ensure they are available to both edit and delete modals. */
 .btn-primary {
     background-color: #007bff;
     color: white;
-    padding: 10px 20px; /* Ensure consistency with other buttons */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -309,7 +301,7 @@ body {
 .btn-secondary {
     background-color: #6c757d;
     color: white;
-    padding: 10px 20px; /* Ensure consistency with other buttons */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -334,7 +326,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1001; /* Higher than edit overlay */
+    z-index: 1001;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -351,7 +343,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 400px; /* Slightly smaller than edit modal */
+    max-width: 400px;
     text-align: center;
     transform: translateY(20px);
     transition: transform 0.3s ease;
@@ -364,7 +356,7 @@ body {
 .delete-modal-content h2 {
     margin-top: 0;
     margin-bottom: 20px;
-    color: #dc3545; /* Red for warning */
+    color: #dc3545;
     font-size: 1.6em;
 }
 
@@ -420,7 +412,7 @@ body {
     .repository-grid {
         grid-template-columns: 1fr;
     }
-    .edit-company-form-card, .delete-modal-content { /* Apply to both modals */
+    .edit-company-form-card, .delete-modal-content {
         padding: 25px;
     }
     .form-actions, .modal-actions {
