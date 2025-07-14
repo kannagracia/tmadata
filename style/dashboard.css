@@ -1,4 +1,15 @@
 /* --- Dashboard Specific Layout --- */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Light gray background */
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
 .dashboard-wrapper {
     flex-grow: 1; /* Allow wrapper to take remaining space */
     display: flex;
@@ -66,14 +77,63 @@
     display: block; /* Active tab content is displayed */
 }
 
-/* --- Company Cards Container (Reused from previous code) --- */
-.company-cards-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 20px;
+/* --- Search Bar Styling (from image_3ecea4.png) --- */
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    background-color: #f0f2f5; /* Light background for the search bar area */
+    border-radius: 50px; /* Pill shape */
+    padding: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.company-card {
+#company-search {
+    flex-grow: 1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1em;
+    outline: none;
+    background-color: transparent; /* Match container background */
+}
+
+#search-button {
+    background-color: #007bff; /* Blue search button */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 10px;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+#search-button img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%); /* Make search icon white if it's black */
+}
+
+/* --- Company Cards Grid Styling (from image_e6f33b.png) --- */
+.company-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted for the card size in the image */
+    gap: 20px; /* Space between cards */
+    margin-top: 30px;
+}
+
+.company-card-item {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -81,47 +141,46 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center; /* Center content horizontally */
+    text-align: center;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    min-height: 120px; /* Give cards a minimum height for consistent look */
+    justify-content: space-between; /* Push button to bottom */
 }
 
-.company-card:hover {
+.company-card-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.company-card h3 {
+.company-card-item h3 {
     margin-top: 0;
-    margin-bottom: 10px;
-    color: #007bff;
-    font-size: 1.3em;
-}
-
-.company-card p {
-    color: #666;
-    font-size: 0.95em;
     margin-bottom: 15px;
+    color: #007bff; /* Blue text for company names */
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
-.company-card .btn-edit {
-    background-color: #28a745;
+.company-card-item .btn-edit {
+    background-color: #28a745; /* Green for edit */
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 8px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
     font-weight: bold;
-    align-self: flex-end;
+    margin-top: 15px; /* Space from company name */
     transition: background-color 0.3s ease;
 }
 
-.company-card .btn-edit:hover {
+.company-card-item .btn-edit:hover {
     background-color: #218838;
 }
 
-/* --- Edit Company Form Overlay (Reused from previous code) --- */
-.edit-company-overlay {
+
+/* --- Edit Company Form Overlay (Reused) --- */
+.edit-company-overlay { /* ... (keep the same styles from previous dashboard.css) ... */
     position: fixed;
     top: 0;
     left: 0;
@@ -142,7 +201,7 @@
     visibility: visible;
 }
 
-.edit-company-form-card {
+.edit-company-form-card { /* ... (keep the same styles from previous dashboard.css) ... */
     background-color: #fff;
     padding: 40px;
     border-radius: 8px;
@@ -158,7 +217,7 @@
     transform: translateY(0);
 }
 
-.edit-company-form-card h2 {
+.edit-company-form-card h2 { /* ... (keep the same styles) ... */
     margin-top: 0;
     margin-bottom: 25px;
     color: #333;
@@ -167,18 +226,18 @@
     padding-bottom: 10px;
 }
 
-.form-group {
+.form-group { /* ... (keep the same styles) ... */
     margin-bottom: 20px;
 }
 
-.form-group label {
+.form-group label { /* ... (keep the same styles) ... */
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #555;
 }
 
-.edit-company-form-card input[type="text"] {
+.edit-company-form-card input[type="text"] { /* ... (keep the same styles) ... */
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -188,20 +247,20 @@
     transition: border-color 0.2s ease;
 }
 
-.edit-company-form-card input[type="text"]:focus {
+.edit-company-form-card input[type="text"]:focus { /* ... (keep the same styles) ... */
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
 }
 
-.form-actions {
+.form-actions { /* ... (keep the same styles) ... */
     display: flex;
     justify-content: flex-end;
     gap: 10px;
     margin-top: 30px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary, .btn-secondary { /* ... (keep the same styles) ... */
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -211,7 +270,7 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.btn-primary {
+.btn-primary { /* ... (keep the same styles) ... */
     background-color: #007bff;
     color: white;
 }
@@ -220,7 +279,7 @@
     background-color: #0056b3;
 }
 
-.btn-secondary {
+.btn-secondary { /* ... (keep the same styles) ... */
     background-color: #6c757d;
     color: white;
 }
@@ -228,6 +287,7 @@
 .btn-secondary:hover {
     background-color: #5a6268;
 }
+
 
 /* --- Coming Soon Section --- */
 .coming-soon-message {
@@ -265,7 +325,7 @@
         width: 100%;
         margin: 5px 0;
     }
-    .company-cards-container {
+    .company-cards-grid {
         grid-template-columns: 1fr;
     }
     .edit-company-form-card {
@@ -277,5 +337,19 @@
     }
     .btn-primary, .btn-secondary {
         width: 100%;
+    }
+    .search-bar-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    #company-search {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    #search-button {
+        width: 100%;
+        border-radius: 5px;
+        margin-left: 0;
+        height: 45px; /* Adjust height for full width button */
     }
 }
