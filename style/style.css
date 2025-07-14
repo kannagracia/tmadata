@@ -300,11 +300,40 @@ header p {
   display: flex;
   flex-direction: column;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
   text-align: center;
+  justify-content: space-between; /* Push button to bottom */
+  align-items: center; /* Center content */
+  min-height: 120px; /* Ensure consistent height */
 }
 
 .repository-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.repository-item .item-content {
+    flex-grow: 1; /* Allows content to take up available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure content fills width */
+}
+
+.repository-item .btn-edit {
+    margin-top: 15px; /* Space above the button */
+    /* Existing btn-edit styles */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.repository-item .btn-edit:hover {
+    background-color: #218838;
 }
 
 .item-content {

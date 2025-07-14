@@ -52,9 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filteredCompanies.forEach(company => {
             const card = document.createElement('div');
-            card.classList.add('company-card-item');
+            card.classList.add('repository-item'); // Change this class to match home.html's structure
+            // You might want to keep 'company-card-item' too or create a new class for dashboard cards
+            // For full consistency, let's use 'repository-item'
+            
             card.innerHTML = `
-                <h3>${company.name}</h3>
+                <div class="item-content">
+                    <h2><a href="company-detail.html?id=${company.id}">${company.name}</a></h2>
+                </div>
                 <button class="btn-edit" data-id="${company.id}">Edit</button>
             `;
             companyListContainer.appendChild(card);
