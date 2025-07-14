@@ -1,42 +1,14 @@
 /* --- Basic Setup (Consistent Theme) --- */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7; /* Consistent light background */
     margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-/* --- Header Styling (Assuming similar styles from previous examples) --- */
-.global-top-header {
-    background-color: #fff;
-    padding: 15px 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.header-left-text-link {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-.header-right-user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.user-avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
-.hierarchy-dropdown {
+    font-family: Arial, sans-serif;
+    padding-top: 60px;
+    background-color: #f7f7f7; /* Consistent light background */
     color: #333;
 }
 
 /* --- Settings Page Container and Card --- */
+
 .settings-container {
     display: flex;
     justify-content: center;

@@ -34,7 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Untuk fitur pencarian
     if (searchButton && searchInput) { // Pastikan kedua elemen ini ada
         searchButton.addEventListener('click', filterRepositoryItems);
-        searchInput.addEventListener('keyup', filterRepositoryItems);
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                filterRepositoryItems();
+            }
+        });
     }
 
     // Untuk efek klik pada setiap item repositori (hanya relevan di home.html)

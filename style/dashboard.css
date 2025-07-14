@@ -37,6 +37,13 @@ body {
     padding-bottom: 15px;
 }
 
+#company-info-tab h2 {
+    text-align: center;
+    margin-bottom: 25px; /* Adjust margin as needed */
+    color: #333;
+    font-size: 1.8em; /* Match dashboard.css h2 for forms, or adjust */
+}
+
 /* --- Tabs Styling --- */
 .tabs {
     display: flex;
@@ -351,5 +358,21 @@ body {
         border-radius: 5px;
         margin-left: 0;
         height: 45px; /* Adjust height for full width button */
+    }
+
+     .repository-item {
+        /* You might want to stack them vertically on small screens */
+        flex-direction: column;
+        align-items: flex-start; /* Align content to the left */
+        min-height: auto; /* Allow height to adjust */
+    }
+    .repository-item .item-content {
+        text-align: left;
+        margin-bottom: 10px; /* Add space below company name when stacked */
+    }
+    .repository-item .btn-edit {
+        width: 100%; /* Make button full width when stacked */
+        margin-left: 0;
+        margin-top: 10px; /* Add space above button when stacked */
     }
 }

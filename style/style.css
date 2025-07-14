@@ -58,7 +58,6 @@ body {
   align-items: center;
   font-size: 0.9em;
   color: #000;
-  
 }
 
 .header-left-text-link {
@@ -297,17 +296,21 @@ header p {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  display: flex;
-  flex-direction: column;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+  display: flex;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
   text-align: center;
-  justify-content: space-between; /* Push button to bottom */
   align-items: center; /* Center content */
   min-height: 120px; /* Ensure consistent height */
+
+  flex-direction: row; /* Arrange children in a row */
+  justify-content: space-between; /* Push name to left, button to right */
+  align-items: center; /* Vertically align items in the middle */
+  min-height: 80px; /* Adjust min-height as needed, less than 120px usually for inline content */
+  padding: 15px 20px; /* Adjust padding to give space around content */
 }
 
 .repository-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .repository-item .item-content {
@@ -316,20 +319,37 @@ header p {
     justify-content: center;
     align-items: center;
     width: 100%; /* Ensure content fills width */
+    margin-bottom: 0;
+}
+
+.repository-item h2 {
+    margin: 0; /* Remove default h2 margin */
+    font-size: 1.4em;
+    white-space: nowrap; /* Prevent company name from wrapping if it's too long */
+    overflow: hidden; /* Hide overflow if nowrap causes issues */
+    text-overflow: ellipsis; /* Add ellipsis for long names */
+}
+
+.repository-item h2 a {
+    text-decoration: none;
+    color: #007bff;
 }
 
 .repository-item .btn-edit {
-    margin-top: 15px; /* Space above the button */
-    /* Existing btn-edit styles */
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 8px 20px;
+    padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9em;
     font-weight: bold;
     transition: background-color 0.3s ease;
+
+    flex-shrink: 0;
+    margin-left: 15px;
+    margin-top: 0;
+    min-width: 60px;
 }
 
 .repository-item .btn-edit:hover {
