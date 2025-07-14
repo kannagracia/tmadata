@@ -1,10 +1,16 @@
-// javascript/dashboard.js (Replace entire content with this)
-
+// javascript/dashboard.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Add these logs back to confirm script execution
     console.log('dashboard.js loaded and DOMContentLoaded fired.');
 
+    // --- DOM Elements ---
     const companyListContainer = document.getElementById('company-list');
+    const companySearchInput = document.getElementById('searchInput'); // Corrected ID
+    const searchButton = document.getElementById('searchButton');     // Corrected ID
+
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    // Edit Modal Elements
     const editOverlay = document.getElementById('edit-overlay');
     const editCompanyForm = document.getElementById('edit-company-form');
     const cancelEditButton = document.getElementById('cancel-edit');
@@ -12,18 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const editCompanyNameInput = document.getElementById('edit-company-name');
     const editCompanyLocationInput = document.getElementById('edit-company-location');
 
-    // FIX: Corrected IDs to match dashboard.html
-    const companySearchInput = document.getElementById('searchInput'); // Changed from 'company-search'
-    const searchButton = document.getElementById('searchButton');     // Changed from 'search-button'
+    // Delete Modal Elements (NEW)
+    const deleteModalOverlay = document.getElementById('delete-modal-overlay');
+    const companyNameToDeleteSpan = document.getElementById('company-name-to-delete');
+    const confirmDeleteButton = document.getElementById('confirm-delete');
+    const cancelDeleteButton = document.getElementById('cancel-delete');
 
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
+    let companyToDeleteId = null; // Variable to store the ID of the company to be deleted
+
     console.log('Found tab buttons:', tabButtons.length);
     console.log('Found tab contents:', tabContents.length);
-    console.log('Found search input:', companySearchInput); // Verify it's not null now
-    console.log('Found search button:', searchButton);     // Verify it's not null now
-
+    console.log('Found search input:', companySearchInput);
+    console.log('Found search button:', searchButton);
 
     // --- Sample Company Data (In a real app, this would come from a database) ---
     let companies = [
@@ -52,39 +58,85 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filteredCompanies.forEach(company => {
             const card = document.createElement('div');
-            card.classList.add('repository-item'); // Change this class to match home.html's structure
-            // You might want to keep 'company-card-item' too or create a new class for dashboard cards
-            // For full consistency, let's use 'repository-item'
+            card.classList.add('repository-item');
             
             card.innerHTML = `
                 <div class="item-content">
                     <h2><a href="company-detail.html?id=${company.id}">${company.name}</a></h2>
                 </div>
-                <button class="btn-edit" data-id="${company.id}">Edit</button>
+                <div class="action-buttons">
+                    <button class="btn-edit" data-id="${company.id}">Edit</button>
+                    <button class="btn-delete" data-id="${company.id}" data-name="${company.name}">Delete</button>
+                </div>
             `;
             companyListContainer.appendChild(card);
         });
+        
+        // Re-attach listeners after rendering new cards
         addEditButtonListeners();
+        addDeleteButtonListeners(); // Call the new function here
     }
 
     // --- Function to Add Event Listeners to Edit Buttons ---
     function addEditButtonListeners() {
         console.log('Adding edit button listeners.');
         document.querySelectorAll('.btn-edit').forEach(button => {
-            button.addEventListener('click', function() {
-                console.log('Edit button clicked for ID:', this.dataset.id);
-                const companyId = this.dataset.id;
-                const companyToEdit = companies.find(c => c.id === companyId);
-                
-                if (companyToEdit) {
-                    editCompanyIdInput.value = companyToEdit.id;
-                    editCompanyNameInput.value = companyToEdit.name;
-                    editCompanyLocationInput.value = companyToEdit.location;
-                    editOverlay.classList.add('active');
-                }
-            });
+            // Remove existing listener to prevent duplicates if renderCompanyCards is called multiple times
+            button.removeEventListener('click', handleEditClick); 
+            button.addEventListener('click', handleEditClick);
         });
     }
+
+    function handleEditClick() {
+        console.log('Edit button clicked for ID:', this.dataset.id);
+        const companyId = this.dataset.id;
+        const companyToEdit = companies.find(c => c.id === companyId);
+        
+        if (companyToEdit) {
+            editCompanyIdInput.value = companyToEdit.id;
+            editCompanyNameInput.value = companyToEdit.name;
+            editCompanyLocationInput.value = companyToEdit.location;
+            editOverlay.classList.add('active');
+        }
+    }
+
+    // --- Function to Add Event Listeners to Delete Buttons (NEW) ---
+    function addDeleteButtonListeners() {
+        console.log('Adding delete button listeners.');
+        document.querySelectorAll('.btn-delete').forEach(button => {
+            // Remove existing listener to prevent duplicates
+            button.removeEventListener('click', handleDeleteClick);
+            button.addEventListener('click', handleDeleteClick);
+        });
+    }
+
+    function handleDeleteClick() {
+        console.log('Delete button clicked for ID:', this.dataset.id);
+        companyToDeleteId = this.dataset.id; // Store ID for confirmation
+        const companyName = this.dataset.name;
+        companyNameToDeleteSpan.textContent = `"${companyName}"`; // Update modal text
+        deleteModalOverlay.classList.add('active'); // Show the delete modal
+    }
+
+    // --- Handle Delete Confirmation (NEW) ---
+    confirmDeleteButton.addEventListener('click', function() {
+        console.log('Confirm delete clicked for ID:', companyToDeleteId);
+        if (companyToDeleteId) {
+            // In a real app, you'd send this ID to a backend API to delete the company
+            companies = companies.filter(company => company.id !== companyToDeleteId);
+            alert('Company deleted successfully! (Simulated)'); // Or display a success message differently
+            renderCompanyCards(companySearchInput.value); // Re-render the list
+        }
+        deleteModalOverlay.classList.remove('active'); // Hide the modal
+        companyToDeleteId = null; // Reset the stored ID
+    });
+
+    // --- Handle Cancel Delete (NEW) ---
+    cancelDeleteButton.addEventListener('click', function() {
+        console.log('Cancel delete clicked.');
+        deleteModalOverlay.classList.remove('active'); // Hide the modal
+        companyToDeleteId = null; // Reset the stored ID
+    });
 
     // --- Handle Edit Form Submission ---
     editCompanyForm.addEventListener('submit', function(event) {
@@ -106,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
         editOverlay.classList.remove('active');
     });
 
-    // --- Handle Cancel Button Click ---
+    // --- Handle Cancel Edit Button Click ---
     cancelEditButton.addEventListener('click', function() {
         console.log('Cancel edit button clicked.');
         editOverlay.classList.remove('active');
@@ -122,6 +174,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.key === 'Enter') {
             console.log('Enter key pressed in search input.');
             renderCompanyCards(this.value);
+        } else if (this.value === '') { // Optional: re-render all companies if search box is cleared
+            renderCompanyCards('');
         }
     });
 
@@ -145,8 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (tabId === 'company-info-tab') {
-            // Ensure companySearchInput is not null before accessing .value
-            renderCompanyCards(companySearchInput ? companySearchInput.value : '');
+            renderCompanyCards(companySearchInput.value); // Re-render when company info tab is active
         }
     }
 
@@ -159,5 +212,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- Initial Render when Page Loads ---
-    showTab('company-info-tab');
+    showTab('company-info-tab'); // Show the company info tab by default and render cards
 });

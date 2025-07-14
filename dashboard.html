@@ -44,8 +44,8 @@
                     <button id="searchButton">Cari</button>
                 </div>
 
-        <div class="repository-grid" id="company-list">
-            </div>
+                <div class="repository-grid" id="company-list">
+                    </div>
 
                 <div class="edit-company-overlay" id="edit-overlay">
                     <div class="edit-company-form-card">
@@ -67,6 +67,18 @@
                         </form>
                     </div>
                 </div>
+
+                <div class="delete-modal-overlay" id="delete-modal-overlay">
+                    <div class="delete-modal-content">
+                        <h2>Confirm Deletion</h2>
+                        <p>Are you sure you want to delete <span id="company-name-to-delete"></span>?</p>
+                        <div class="modal-actions">
+                            <button id="confirm-delete" class="btn-primary">Delete</button>
+                            <button id="cancel-delete" class="btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div id="company-assets-tab" class="tab-content">
@@ -81,5 +93,5 @@
 
     <script src="javascript/dropdown.js"></script>
     <script src="javascript/dashboard.js"></script>
-    </body>
+</body>
 </html>
