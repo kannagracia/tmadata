@@ -3,7 +3,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     padding-top: 60px;
-    background-color: #f7f7f7; /* Consistent light background */
+    background-color: #f7f7f7;
     color: #333;
 }
 
@@ -58,11 +58,11 @@ body {
 .avatar-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fills the circle */
+    object-fit: cover; 
 }
 
 .upload-button {
-    background-color: #007bff; /* Primary blue color for action button */
+    background-color: #007bff; 
     color: white;
     padding: 10px 20px;
     border-radius: 5px;

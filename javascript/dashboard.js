@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Found search input:', companySearchInput);
     console.log('Found search button:', searchButton);
 
-    // --- Sample Company Data (In a real app, this would come from a database) ---
+    // --- Sample Company Data ---
     let companies = [
         { id: '1', name: 'PT ABC', location: 'Jakarta', nib: '01234567890123', npwp: '12.345.678.9-012.345' },
         { id: '2', name: 'PT DEF', location: 'Surabaya', nib: '09876543210987', npwp: '98.765.432.1-098.765' },
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- Function to Add Event Listeners to Delete Buttons (NEW) ---
+    // --- Function to Add Event Listeners to Delete Buttons ---
     function addDeleteButtonListeners() {
         console.log('Adding delete button listeners.');
         document.querySelectorAll('.btn-delete').forEach(button => {
