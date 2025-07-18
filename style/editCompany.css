@@ -1,0 +1,54 @@
+/* Basic styling for the edit form container */
+.edit-page-container {
+    max-width: 600px;
+    margin: 50px auto 0 auto; /* Adjust top margin as needed */
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.edit-page-container h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.8em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+.edit-page-container input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease;
+}
+.edit-page-container input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 30px;
+}
+/* Buttons from dashboard.css or style.css (ensure these classes exist there) */
+/*
+.btn-primary { ... }
+.btn-primary:hover { ... }
+.btn-secondary { ... }
+.btn-secondary:hover { ... }
+*/
